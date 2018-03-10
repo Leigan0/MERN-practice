@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+// import CommentList from './users';
 
 
 // user a constructor and super method to pass props down
@@ -32,7 +33,7 @@ class UserProfiles extends Component {
     });
     // use axios to post to database
     axios.post('http://localhost:3001/api/users', {
-      NameOfUser: this.state.handleNameOfUser,
+      NameOfUser: this.state.NameOfUser,
       UserEmail: this.state.UserEmail,
     })
     .then(response => {

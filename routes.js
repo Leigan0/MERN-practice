@@ -4,10 +4,14 @@ const parseurl = require('parseurl');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const User = require('./models/user.js')
+const path = require('path');
+const expressValidator = require('express-validator');
 const app = express();
 const url = process.env.MONGOLAB_URI
 
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.json());
+ // for parsing application/x-www-form-urlencoded
 //To prevent errors from Cross Origin Resource Sharing, we will set
 //our headers to allow CORS with middleware like so:
 app.use(function(req, res, next) {
@@ -36,6 +40,7 @@ app.get('/api/users', function(req, res){
 // Post new user //
 
 app.post('/api/users', function(req, res){
+  console.log(req.body)
   User.create({
     userName: req.body.NameOfUser,
     userEmail: req.body.UserEmail,
